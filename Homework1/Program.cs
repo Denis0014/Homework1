@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Homework1
 {
@@ -65,6 +66,25 @@ namespace Homework1
             }
             return prod;
         }
+        /// <summary>
+        /// Вычисляет количество чисел в наборе, меньших K, а также количество чисел, делящихся на K нацело
+        /// </summary>
+        /// <param name="k">Число для сравнений</param>
+        /// <param name="countS">Количество чисел в наборе, меньших K</param>
+        /// <param name="countD">Количество чисел, делящихся на K нацело</param>
+        static void CountOfSmallerAndDiv(int k, ref int countS, ref int countD)
+        {
+            int temp = -1;
+            for (int i = 0; temp != 0; i++)
+            {
+                Console.Write($"{i + 1} >>> ");
+                temp = int.Parse(Console.ReadLine() ?? "0");
+                if (temp < k) 
+                    countS++;
+                if (temp % k == 0)
+                    countD++;
+            }
+        }
         static void Main(string[] args)
         {
             // Задание 1
@@ -79,6 +99,12 @@ namespace Homework1
             Console.WriteLine(Min(6, Math.Sqrt(37))); // 6
             // Задание 5
             Console.WriteLine(ProdOdds(1, 7)); // 48
+            // Задание 6
+            int countS = 0;
+            int countD = 0;
+            Console.Write("K >>> ");
+            CountOfSmallerAndDiv(int.Parse(Console.ReadLine() ?? "0"), ref countS, ref countD);
+            Console.WriteLine($"{countS}, {countD}");
         }
     }
 }

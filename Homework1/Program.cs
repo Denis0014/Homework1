@@ -1,5 +1,5 @@
 ﻿using System;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Formats.Asn1;
 
 namespace Homework1
 {
@@ -81,10 +81,21 @@ namespace Homework1
                 temp = int.Parse(Console.ReadLine() ?? "0");
                 if (temp < k) 
                     countS++;
-                if (temp % k == 0)
+                if (k == 0 || temp % k == 0)
                     countD++;
             }
         }
+        /// <summary>
+        /// Имена месяцев года
+        /// </summary>
+        enum Seasons { Январь = 1, Февраль, Март, Фпрель, Май, Июнь, Июль, Август, Cентябрь, Октябрь, Ноябрь, Декабрь };
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        static Seasons GetSeason(int num) => (Seasons)(num);
+
         static void Main(string[] args)
         {
             // Задание 1
@@ -103,8 +114,11 @@ namespace Homework1
             int countS = 0;
             int countD = 0;
             Console.Write("K >>> ");
-            CountOfSmallerAndDiv(int.Parse(Console.ReadLine() ?? "0"), ref countS, ref countD);
-            Console.WriteLine($"{countS}, {countD}");
+            int k = int.Parse(Console.ReadLine() ?? "0"); // 10
+            CountOfSmallerAndDiv(k, ref countS, ref countD); // 23, -12, 3, 5, 0
+            Console.WriteLine($"{countS}, {countD}"); // 4, 1
+            // Задание 7
+            Console.WriteLine(GetSeason(11));
         }
     }
 }

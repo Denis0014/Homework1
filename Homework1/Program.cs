@@ -14,7 +14,7 @@ namespace Homework1
         /// </summary>
         /// <param name="x">Буквенная координата</param>
         /// <param name="y">Числовая координата</param>
-        /// <returns>Цвет клетки</returns>
+        /// <returns>Цвет клетки ("Чёрный", "Белый")</returns>
         /// <exception cref="ArgumentException">Выдаёт это исключение, если координаты клетки находятся за границами доски</exception>
         static string GetChessColor(int x, int y)
         {
@@ -25,6 +25,22 @@ namespace Homework1
             if ((x + y) % 2 == 0) return "Чёрный";
             else return "Белый";
         }
+        /// <summary>
+        /// Возращает количество вещественных корней квадратного уравнения вида: Ax^2+Bx+c=0
+        /// </summary>
+        /// <param name="a">Коэффициент при 2-й степени при неизвестном</param>
+        /// <param name="b">Коэффициент при 1-й степени при неизвестном</param>
+        /// <param name="c">Коэффициент при 0-й степени при неизвестном</param>
+        /// <returns>Количество вещественных корней квадратного <c>(0, 1, 2)</c></returns>
+        static int QuantityOfRoots(int a, int b, int c)
+        {
+            int d = b * b - 4 * a * c;
+            switch (Math.Sign(d)) { 
+                case -1: return 0;
+                case 0: return 1;
+                default: return 2;
+            }
+        }
         static void Main(string[] args)
         {
             // Задание 1
@@ -32,7 +48,9 @@ namespace Homework1
             TenToZero(ref a);
             Console.WriteLine(a); // 105
             // Задание 2
-            Console.WriteLine(GetChessColor(1, 2));
+            Console.WriteLine(GetChessColor(1, 2)); // Белый
+            // Задание 3
+            Console.WriteLine(QuantityOfRoots(1, 2, 1));
         }
     }
 }

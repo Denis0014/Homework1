@@ -31,7 +31,7 @@ namespace Homework1
         /// <param name="a">Коэффициент при 2-й степени при неизвестном</param>
         /// <param name="b">Коэффициент при 1-й степени при неизвестном</param>
         /// <param name="c">Коэффициент при 0-й степени при неизвестном</param>
-        /// <returns>Количество вещественных корней квадратного <c>(0, 1, 2)</c></returns>
+        /// <returns>Количество вещественных корней квадратного (0, 1, 2)</returns>
         static int QuantityOfRoots(int a, int b, int c)
         {
             int d = b * b - 4 * a * c;
@@ -41,6 +41,14 @@ namespace Homework1
                 default: return 2;
             }
         }
+        /// <summary>
+        /// Возвращает минимум из двух переданных вещественных чисел
+        /// </summary>
+        /// <param name="a">Первое число</param>
+        /// <param name="b">Второе число</param>
+        /// <returns>Минимум из двух чисел (double)</returns>
+        static double Min(double a, double b) => a < b ? a : b;
+
         static void Main(string[] args)
         {
             // Задание 1
@@ -50,7 +58,9 @@ namespace Homework1
             // Задание 2
             Console.WriteLine(GetChessColor(1, 2)); // Белый
             // Задание 3
-            Console.WriteLine(QuantityOfRoots(1, 2, 1));
+            Console.WriteLine(QuantityOfRoots(1, 2, 1)); // 1
+            // Задание 4
+            Console.WriteLine(Min(6, Math.Sqrt(37))); // 6
         }
     }
 }

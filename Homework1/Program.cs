@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Formats.Asn1;
 
 namespace Homework1
 {
@@ -36,7 +35,8 @@ namespace Homework1
         static int QuantityOfRoots(int a, int b, int c)
         {
             int d = b * b - 4 * a * c;
-            switch (Math.Sign(d)) { 
+            switch (Math.Sign(d))
+            {
                 case -1: return 0;
                 case 0: return 1;
                 default: return 2;
@@ -47,7 +47,7 @@ namespace Homework1
         /// </summary>
         /// <param name="a">Первое число</param>
         /// <param name="b">Второе число</param>
-        /// <returns>Минимум из двух чисел (double)</returns>
+        /// <returns>Минимум из двух чисел</returns>
         static double Min(double a, double b) => a < b ? a : b;
         /// <summary>
         /// Возвращает произведение всех чётных целых чисел от A до B включительно
@@ -60,7 +60,7 @@ namespace Homework1
             double prod = 1;
             if (a % 2 != 0) a++;
             if (b - a < 2) return 0;
-            for (int i = a ; i <= b; i += 2) 
+            for (int i = a; i <= b; i += 2)
             {
                 prod *= i;
             }
@@ -79,22 +79,34 @@ namespace Homework1
             {
                 Console.Write($"{i + 1} >>> ");
                 temp = int.Parse(Console.ReadLine() ?? "0");
-                if (temp < k) 
+                if (temp < k)
                     countS++;
                 if (k == 0 || temp % k == 0)
                     countD++;
             }
         }
         /// <summary>
-        /// Имена месяцев года
+        /// Имена времён года
         /// </summary>
-        enum Seasons { Январь = 1, Февраль, Март, Фпрель, Май, Июнь, Июль, Август, Cентябрь, Октябрь, Ноябрь, Декабрь };
+        enum Seasons { Зима, Весна, Лето, Осень };
         /// <summary>
-        /// 
+        /// Возвращает название времени года по номеру месяца
         /// </summary>
-        /// <param name="num"></param>
-        /// <returns></returns>
-        static Seasons GetSeason(int num) => (Seasons)(num);
+        /// <param name="num">Номер месяца</param>
+        /// <returns>Время года (Зима, Весна, Лето, Осень)</returns>
+        static Seasons GetSeason(int num)
+        {
+            switch (num)
+            {
+                case > 12: throw new ArgumentException("Месяцов в году не больше 12");
+                case 12: return Seasons.Зима;
+                case >= 9: return Seasons.Осень;
+                case >= 6: return Seasons.Лето;
+                case >= 3: return Seasons.Весна;
+                case >= 1: return Seasons.Зима;
+                default: throw new ArgumentException("Номер мясяца может быть только натуральными");
+            }
+        }
 
         static void Main(string[] args)
         {
@@ -118,7 +130,7 @@ namespace Homework1
             CountOfSmallerAndDiv(k, ref countS, ref countD); // 23, -12, 3, 5, 0
             Console.WriteLine($"{countS}, {countD}"); // 4, 1
             // Задание 7
-            Console.WriteLine(GetSeason(11));
+            Console.WriteLine(GetSeason(0)); // Осень
         }
     }
 }

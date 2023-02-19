@@ -4,6 +4,7 @@ namespace Homework1
 {
     class Program
     {
+        public static Random r = new Random();
         /// <summary>
         /// Обнуляет разряд десятков числа
         /// </summary>
@@ -107,6 +108,19 @@ namespace Homework1
                 default: throw new ArgumentException("Номер мясяца может быть только натуральными");
             }
         }
+        /// <summary>
+        /// Выводит на консоль N строк "Месяц №<номер месяца>, его сезон: <сезон для этого месяца>". Номера месяцев генерируются случайно
+        /// </summary>
+        /// <param name="num">Номер месяца</param>
+        static void PrintSeason(int n) 
+        {
+            int temp = 0;
+            for (var i = 0; i < n; i++)
+            {
+                temp = r.Next(1, 12);
+                Console.WriteLine($"Месяц №{temp}, его сезон: {GetSeason(temp)}");
+            }
+        }
 
         static void Main(string[] args)
         {
@@ -130,7 +144,9 @@ namespace Homework1
             CountOfSmallerAndDiv(k, ref countS, ref countD); // 23, -12, 3, 5, 0
             Console.WriteLine($"{countS}, {countD}"); // 4, 1
             // Задание 7
-            Console.WriteLine(GetSeason(0)); // Осень
+            Console.WriteLine(GetSeason(11)); // Осень
+            // Задание 8
+            PrintSeason(3);
         }
     }
 }

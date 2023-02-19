@@ -48,7 +48,23 @@ namespace Homework1
         /// <param name="b">Второе число</param>
         /// <returns>Минимум из двух чисел (double)</returns>
         static double Min(double a, double b) => a < b ? a : b;
-
+        /// <summary>
+        /// Возвращает произведение всех чётных целых чисел от A до B включительно
+        /// </summary>
+        /// <param name="a">Начало</param>
+        /// <param name="b">Конец</param>
+        /// <returns>Произведение всех чётных целых чисел от A до B включительно</returns>
+        static double ProdOdds(int a, int b)
+        {
+            double prod = 1;
+            if (a % 2 != 0) a++;
+            if (b - a < 2) return 0;
+            for (int i = a ; i <= b; i += 2) 
+            {
+                prod *= i;
+            }
+            return prod;
+        }
         static void Main(string[] args)
         {
             // Задание 1
@@ -61,6 +77,8 @@ namespace Homework1
             Console.WriteLine(QuantityOfRoots(1, 2, 1)); // 1
             // Задание 4
             Console.WriteLine(Min(6, Math.Sqrt(37))); // 6
+            // Задание 5
+            Console.WriteLine(ProdOdds(1, 7)); // 48
         }
     }
 }
